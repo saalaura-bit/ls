@@ -31,7 +31,13 @@ body {
   color: var(--ink-80);
   background: var(--white);
   min-height: 100vh;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+img { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-user-drag: none; }
+.container, body:after { -webkit-touch-callout: none; }
 .container { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
 
 /* LANG TOGGLE */
