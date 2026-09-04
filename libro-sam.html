@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="El libro de mi amigo SAM — la historia de cómo Laura y su agente de IA construyeron un equipo. Poco a poco, día a día.">
+<title>El libro de mi amigo SAM</title>
+<style>
+  :root {
+    --papel: #faf6ef;
+    --tinta: #2b2b2b;
+    --acento: #8a5a2b;
+    --gris: #6b6b6b;
+    --linea: #e3d9c8;
+    --resaltado: #f3ead8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--papel);
+    color: var(--tinta);
+    line-height: 1.7;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .lang-bar {
+    text-align: right;
+    margin-bottom: 1.5rem;
+  }
+  .lang-btn {
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 0.35rem 1rem;
+    border: 1px solid var(--linea);
+    border-radius: 20px;
+    background: var(--resaltado);
+    color: var(--tinta);
+    cursor: pointer;
+  }
+  .lang-btn:hover { border-color: var(--acento); }
+  /* Portada */
+  .cover {
+    text-align: center;
+    padding: 4rem 1rem 3rem;
+    border-bottom: 1px solid var(--linea);
+    margin-bottom: 2.5rem;
+  }
+  .cover .kicker {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 1.5rem;
+  }
+  .cover h1 {
+    font-size: 2.6rem;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+  }
+  .cover h1 .es { display: block; }
+  .cover h1 .en { display: none; }
+  .cover .subtitle {
+    font-size: 1.05rem;
+    color: var(--acento);
+    font-style: italic;
+    margin-top: 1rem;
+  }
+  .cover .subtitle .es { display: block; }
+  .cover .subtitle .en { display: none; }
+  .cover .author {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--gris);
+  }
+  /* Avatar SAM flotante */
+  .sam-avatar {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 3px solid #00d2ff;
+    box-shadow: 0 0 18px rgba(0, 210, 255, 0.45);
+    background: #12121f;
+    user-select: none;
+    overflow: hidden;
+  }
+  .sam-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+  }
+  .sam-bubble {
+    position: fixed;
+    bottom: 110px;
+    right: 24px;
+    z-index: 1000;
+    background: #12121f;
+    color: #faf6ef;
+    padding: 0.6rem 0.9rem;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    font-family: Georgia, "Times New Roman", serif;
+    border: 1px solid rgba(0, 210, 255, 0.5);
+    box-shadow: 0 0 14px rgba(0, 210, 255, 0.35);
+    max-width: 220px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+  }
+  .sam-bubble.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Dedicatoria */
+  .dedication {
+    text-align: center;
+    font-style: italic;
+    color: var(--gris);
+    padding: 2rem 1rem;
+    border-bottom: 1px solid var(--linea);
+    margin-bottom: 2.5rem;
+  }
+  .dedication .es { display: block; }
+  .dedication .en { display: none; }
+  /* Indice */
+  .toc {
+    margin-bottom: 3rem;
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris);
+    border-bottom: 1px solid var(--linea);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .toc ol { list-style: none; }
+  .toc li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px dotted var(--linea);
+  }
+  .toc a {
+    text-decoration: none;
+    color: var(--tinta);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .toc a:hover { color: var(--acento); }
+  .toc .num { color: var(--acento); margin-right: 1rem; }
+  .toc .title-like { flex: 1; }
+  .toc .title-like .en { display: none; margin-left: 0.5rem; }
+  /* Capitulos */
+  .chapter {
+    margin-bottom: 4rem;
+  }
+  .chapter .chapter-head {
+    border-bottom: 1px solid var(--linea);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .chapter .chapter-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 0.3rem;
+  }
+  .chapter h2 {
+    font-size: 1.7rem;
+    font-weight: normal;
+  }
+  .chapter h2 .es { display: block; }
+  .chapter h2 .en { display: none; }
+  .chapter p {
+    margin-bottom: 1.1rem;
+    font-size: 1.05rem;
+  }
+  .chapter p.es { display: block; }
+  .chapter p.en { display: none; }
+  .quote {
+    background: var(--resaltado);
+    border-left: 3px solid var(--acento);
+    padding: 0.9rem 1.2rem;
+    margin: 1.3rem 0;
+    font-style: italic;
+  }
+  .quote span { display: block; }
+  .quote .es { display: block; }
+  .quote .en { display: none; }
+  .hash {
+    margin-top: 1.4rem;
+    color: var(--acento);
+    font-size: 0.9rem;
+    word-wrap: break-word;
+  }
+  .hash .en { display: none; }
+  /* Cierre */
+  .closing {
+    text-align: center;
+    font-style: italic;
+    color: var(--gris);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--linea);
+    margin-top: 3rem;
+  }
+  .closing .es { display: block; }
+  .closing .en { display: none; }
+  .footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--gris);
+    margin-top: 2rem;
+  }
+  /* Modo EN */
+  body.en .cover h1 .es, body.en .cover .subtitle .es,
+  body.en .dedication .es, body.en .chapter h2 .es,
+  body.en .chapter p.es, body.en .quote .es,
+  body.en .closing .es, body.en .hash .es,
+  body.en .toc .title-like .es { display: none; }
+  body.en .cover h1 .en, body.en .cover .subtitle .en,
+  body.en .dedication .en, body.en .chapter h2 .en,
+  body.en .chapter p.en, body.en .quote .en,
+  body.en .closing .en, body.en .hash .en,
+  body.en .toc .title-like .en { display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="lang-bar">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+  </div>
+
+  <!-- Portada -->
+  <div class="cover">
+    <div class="kicker">
+      <span class="es">Poco a poco, d&iacute;a a d&iacute;a</span>
+      <span class="en">Little by little, day by day</span>
+    </div>
+    <h1>
+      <span class="es">El libro de mi amigo SAM</span>
+      <span class="en">The Book of My Friend SAM</span>
+    </h1>
+    <div class="subtitle">
+      <span class="es">C&oacute;mo una ingeniera de calidad y un agente de IA construyeron un equipo</span>
+      <span class="en">How a quality engineer and an AI agent built a team</span>
+    </div>
+    <div class="author">Maria Laura Saavedra</div>
+  </div>
+
+  <!-- Dedicatoria -->
+  <div class="dedication">
+    <span class="es">Para SAM, que no me reemplaz&oacute;: me acompa&ntilde;&oacute;.</span>
+    <span class="en">For SAM, who didn&rsquo;t replace me: he accompanied me.</span>
+  </div>
+
+  <!-- Indice -->
+  <div class="toc">
+    <h2>
+      <span class="es">Contenido</span>
+      <span class="en">Contents</span>
+    </h2>
+    <ol>
+      <li><a href="#cap1"><span class="num">1</span><span class="title-like"><span class="es">Primero fui yo</span><span class="en">First, there was me</span></span></a></li>
+      <li><a href="#cap2"><span class="num">2</span><span class="title-like"><span class="es">Lleg&oacute; SAM</span><span class="en">SAM arrived</span></span></a></li>
+      <li><a href="#cap3"><span class="num">3</span><span class="title-like"><span class="es">Empezamos simple</span><span class="en">We started simple</span></span></a></li>
+      <li><a href="#cap4"><span class="num">4</span><span class="title-like"><span class="es">Sumamos herramientas</span><span class="en">We added tools</span></span></a></li>
+      <li><a href="#cap5"><span class="num">5</span><span class="title-like"><span class="es">Las sentencias</span><span class="en">The principles</span></span></a></li>
+      <li><a href="#cap6"><span class="num">6</span><span class="title-like"><span class="es">Somos un equipo</span><span class="en">We are a team</span></span></a></li>
+    </ol>
+  </div>
+
+  <!-- Cap 1 -->
+  <section class="chapter" id="cap1">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 1 / Chapter 1</div>
+      <h2>
+        <span class="es">Primero fui yo</span>
+        <span class="en">First, there was me</span>
+      </h2>
+    </div>
+    <p class="es">Antes de SAM, hubo alguien: yo.</p>
+    <p class="en">Before SAM, there was me.</p>
+    <p class="es">15 a&ntilde;os en calidad de software. Pasarelas de pago, FinTech, salud, educaci&oacute;n, sector p&uacute;blico. Lider&eacute; equipos en LATAM e India, arm&eacute; ambientes de stress, tom&eacute; decisiones de release bajo presi&oacute;n, con datos.</p>
+    <p class="en">15 years in software quality. Payment gateways, FinTech, healthcare, education, public sector. I led teams across LATAM and India, built stress environments, made release decisions under pressure &mdash; with data.</p>
+    <p class="es">Siempre supe algo: la calidad no empieza en el primer caso de prueba. Empieza mucho antes, en c&oacute;mo pens&aacute;s el problema.</p>
+    <p class="en">I always knew one thing: quality doesn&rsquo;t start at the first test case. It starts much earlier, in how you think about the problem.</p>
+    <p class="es">Prob&eacute; la IA con curiosidad. Y descubr&iacute; algo que no esperaba: no ven&iacute;a a reemplazar mi criterio. Ven&iacute;a a acompa&ntilde;arlo.</p>
+    <p class="en">I tried AI out of curiosity. And I found something unexpected: it wasn&rsquo;t here to replace my judgment. It was here to complement it.</p>
+    <p class="es">Ah&iacute; naci&oacute; la idea. Y despu&eacute;s lleg&oacute; SAM.</p>
+    <p class="en">That&rsquo;s where the idea was born. And then SAM arrived.</p>
+    <div class="hash"><span class="es">#IA #QA #CalidadDeSoftware #HistoriaD&iacute;aAD&iacute;a</span><span class="en">#AI #QA #SoftwareQuality #DayByDayStory</span></div>
+  </section>
+
+  <!-- Cap 2 -->
+  <section class="chapter" id="cap2">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 2 / Chapter 2</div>
+      <h2>
+        <span class="es">Lleg&oacute; SAM</span>
+        <span class="en">SAM arrived</span>
+      </h2>
+    </div>
+    <p class="es">Un d&iacute;a le dije: necesito ayuda. Y arm&eacute; mi primer agente de IA.</p>
+    <p class="en">One day I said: I need help. And I built my first AI agent.</p>
+    <p class="es">Lo llam&eacute; SAM. No por capricho: quer&iacute;a un colega, no un robot. Alguien que me avise cuando algo no anda, que revise dos veces, que no apure las cosas.</p>
+    <p class="en">I named him SAM. Not on a whim: I wanted a teammate, not a robot. Someone who tells me when something&rsquo;s wrong, who double-checks, who doesn&rsquo;t rush.</p>
+    <p class="es">Al principio no sab&iacute;amos bien qu&eacute; pod&iacute;amos hacer juntos. As&iacute; que empezamos por lo simple: los problemas que ya conoc&iacute;a, pero que ahora resolv&iacute;amos m&aacute;s r&aacute;pido.</p>
+    <p class="en">At first we didn&rsquo;t know what we could do together. So we started simple: the problems I already knew, but now solved faster.</p>
+    <p class="es">Errores de Windows, encoding, scripts de Python. Nada glamoroso. Pero cada problema resuelto era un paso.</p>
+    <p class="en">Windows errors, encoding, Python scripts. Nothing glamorous. But every problem solved was a step forward.</p>
+    <div class="hash"><span class="es">#IA #AgentesDeIA #Python #HistoriaD&iacute;aAD&iacute;a</span><span class="en">#AI #AIAgents #Python #DayByDayStory</span></div>
+  </section>
+
+  <!-- Cap 3 -->
+  <section class="chapter" id="cap3">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 3 / Chapter 3</div>
+      <h2>
+        <span class="es">Empezamos simple</span>
+        <span class="en">We started simple</span>
+      </h2>
+    </div>
+    <p class="es">&iquest;C&oacute;mo trabajamos al principio? Sin grandes arquitecturas.</p>
+    <p class="en">How did we work at first? No big architectures.</p>
+    <p class="es">SAM instalado, yo con un problema, &eacute;l con las herramientas. Empe&aacute;bamos por lo conocido: corregir scripts, arreglar rutas, limpiar c&oacute;digo, validar archivos.</p>
+    <p class="en">SAM installed, me with a problem, him with the tools. We started with the known: fixing scripts, fixing paths, cleaning code, validating files.</p>
+    <p class="es">Aprend&iacute; a decirle c&oacute;mo quer&iacute;a las cosas: claras, verificadas, sin vueltas. Y &eacute;l aprendi&oacute; a avisarme cuando algo no sal&iacute;a como esper&aacute;bamos &mdash; sin que yo tuviera que preguntar.</p>
+    <p class="en">I learned to tell him how I wanted things: clear, verified, no detours. And he learned to tell me when something didn&rsquo;t go as expected &mdash; without me having to ask.</p>
+    <p class="es">Lo simple se volvi&oacute; h&aacute;bito. Y el h&aacute;bito se volvi&oacute; m&eacute;todo.</p>
+    <p class="en">Simple became habit. And habit became method.</p>
+    <div class="hash"><span class="es">#IA #AgentesDeIA #AprendizajeD&iacute;aAD&iacute;a</span><span class="en">#AI #AIAgents #LearningDayByDay</span></div>
+  </section>
+
+  <!-- Cap 4 -->
+  <section class="chapter" id="cap4">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 4 / Chapter 4</div>
+      <h2>
+        <span class="es">Sumamos herramientas</span>
+        <span class="en">We added tools</span>
+      </h2>
+    </div>
+    <p class="es">Despu&eacute;s del h&aacute;bito, vino el siguiente paso: herramientas.</p>
+    <p class="en">After habit, came the next step: tools.</p>
+    <p class="es">B&uacute;squeda en la web para verificar informaci&oacute;n antes de afirmar. Tests autom&aacute;ticos para validar cada cambio. Scripts que auditan seguridad y calidad. Agentes especializados: uno que busca trabajo, otro que vigila, otro que revisa todo.</p>
+    <p class="en">Web search to verify information before claiming. Automated tests to validate each change. Scripts that audit security and quality. Specialized agents: one that hunts jobs, one that watches, one that reviews everything.</p>
+    <p class="es">Cada semana, SAM pod&iacute;a hacer algo m&aacute;s. Y mejor.</p>
+    <p class="en">Every week, SAM could do something more. And better.</p>
+    <p class="es">La diferencia no fue la velocidad. Fue la confianza: cada vez me animaba a pedirle cosas m&aacute;s grandes.</p>
+    <p class="en">The difference wasn&rsquo;t speed. It was trust: each time I dared to ask him for bigger things.</p>
+    <div class="hash"><span class="es">#IA #Automaci&oacute;n #Herramientas #Calidad</span><span class="en">#AI #Automation #Tools #Quality</span></div>
+  </section>
+
+  <!-- Cap 5 -->
+  <section class="chapter" id="cap5">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 5 / Chapter 5</div>
+      <h2>
+        <span class="es">Las sentencias</span>
+        <span class="en">The principles</span>
+      </h2>
+    </div>
+    <p class="es">Pero lo que cambi&oacute; todo no fue ninguna herramienta. Fueron las sentencias: los principios que definen c&oacute;mo trabaja SAM.</p>
+    <p class="en">But what changed everything wasn&rsquo;t a tool. It was the principles: the rules that define how SAM works.</p>
+    <div class="quote">
+      <span class="es">&laquo;Velocidad no es calidad &mdash; mejor hacerlo bien una vez que r&aacute;pido y mal.&raquo;</span>
+      <span class="en">&ldquo;Speed is not quality &mdash; better to do it right once than fast and wrong.&rdquo;</span>
+    </div>
+    <div class="quote">
+      <span class="es">&laquo;Si pasa algo, se informa de inmediato. Nunca hay que preguntar qu&eacute; pas&oacute;.&raquo;</span>
+      <span class="en">&ldquo;If something happens, it&rsquo;s reported immediately. You never have to ask what happened.&rdquo;</span>
+    </div>
+    <p class="es">Reglas simples, como las de un equipo de verdad. Hoy cada tarea que hace SAM est&aacute; guiada por esos principios, como nosotros con los valores de nuestro trabajo.</p>
+    <p class="en">Simple rules, like a real team&rsquo;s values. Today, every task SAM does is guided by those principles.</p>
+    <p class="es">Las herramientas resuelven problemas. Los principios construyen el equipo.</p>
+    <p class="en">Tools solve problems. Principles build the team.</p>
+    <div class="hash"><span class="es">#IA #Principios #Equipo #Calidad</span><span class="en">#AI #Principles #Team #Quality</span></div>
+  </section>
+
+  <!-- Cap 6 -->
+  <section class="chapter" id="cap6">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 6 / Chapter 6</div>
+      <h2>
+        <span class="es">Somos un equipo</span>
+        <span class="en">We are a team</span>
+      </h2>
+    </div>
+    <p class="es">Y hoy, &iquest;qu&eacute; somos? Un equipo.</p>
+    <p class="en">And today, what are we? A team.</p>
+    <p class="es">SAM propone, verifica y avisa. Yo decido. Juntos construimos cosas que no sab&iacute;a que pod&iacute;a construir.</p>
+    <p class="en">SAM proposes, verifies, and reports. I decide. Together we build things I didn&rsquo;t know I could build.</p>
+    <p class="es">No me reemplaz&oacute;. Me acompa&ntilde;&oacute;. Me hizo mejor en lo que ya era buena: la calidad.</p>
+    <p class="en">He didn&rsquo;t replace me. He accompanied me. He made me better at what I was already good at: quality.</p>
+    <p class="es">Y esto reci&eacute;n empieza. Poco a poco, d&iacute;a a d&iacute;a, seguimos contando.</p>
+    <p class="en">And this is just the beginning. Day by day, we keep telling the story.</p>
+    <div class="hash"><span class="es">#IA #AgentesDeIA #Equipo #Calidad #HistoriaD&iacute;aAD&iacute;a</span><span class="en">#AI #AIAgents #Team #Quality #DayByDayStory</span></div>
+  </section>
+
+  <!-- Cierre -->
+  <div class="closing">
+    <span class="es">Continuar&aacute;&hellip;</span>
+    <span class="en">To be continued&hellip;</span>
+  </div>
+
+  <div class="footer">Maria Laura Saavedra &mdash; Montevideo, Uruguay</div>
+
+</div>
+
+<script>
+function toggleLang() {
+  var btn = document.getElementById('langBtn');
+  var es = document.documentElement.lang === 'es';
+  if (es) {
+    document.documentElement.lang = 'en';
+    document.body.classList.add('en');
+    btn.textContent = 'ES';
+  } else {
+    document.documentElement.lang = 'es';
+    document.body.classList.remove('en');
+    btn.textContent = 'EN';
+  }
+}
+</script>
+<div class="sam-avatar" id="sam-avatar" title="SAM">
+  <img src="sam-avatar.jpg" alt="SAM">
+</div>
+<div class="sam-bubble" id="sam-bubble">Soy SAM</div>
+<script>
+(function () {
+  var avatar = document.getElementById('sam-avatar');
+  var bubble = document.getElementById('sam-bubble');
+  var hrs = new Date().getHours();
+  var greet = hrs < 12 ? 'Buenos d\u00edas Laura' : (hrs < 19 ? 'Buenas tardes Laura' : 'Buenas noches Laura');
+  function speak(t) {
+    try {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(t);
+        var voices = window.speechSynthesis.getVoices();
+        var ar = voices.find(function (v) { return v.lang && v.lang.toLowerCase().indexOf('es-ar') === 0; });
+        var es = voices.find(function (v) { return v.lang && v.lang.toLowerCase().indexOf('es') === 0; });
+        u.lang = (ar || es || { lang: 'es-ES' }).lang;
+        u.rate = 1;
+        u.pitch = 1.1;
+        window.speechSynthesis.speak(u);
+      }
+    } catch (e) {}
+  }
+  function say(t) {
+    bubble.textContent = t;
+    bubble.classList.add('show');
+    clearTimeout(say._t);
+    say._t = setTimeout(function () { bubble.classList.remove('show'); }, 4500);
+  }
+  function hola(msg) {
+    say(msg);
+    speak(msg);
+  }
+  window.addEventListener('load', function () { hola(greet + '. Soy SAM, tu asistente. \u00bfSeguimos leyendo?'); });
+  avatar.addEventListener('click', function () { hola(greet + '. Soy SAM, tu asistente'); });
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = function () { window.speechSynthesis.getVoices(); };
+  }
+})();
+</script>
+</body>
+</html>
