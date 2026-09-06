@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog - Maria Laura Saavedra</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a6dc8'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='18' fill='white'%3ELS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inconsolata:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260905">
+<style>
+  .blog-hero { background: var(--navy); color: var(--white); padding: 88px 0 64px; }
+  .blog-hero .kicker { font-family: 'Inconsolata', monospace; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-size: 14px; font-weight: 700; }
+  .blog-hero h1 { margin: 12px 0 0; font-size: clamp(32px, 4.5vw, 48px); letter-spacing: -0.02em; line-height: 1.15; }
+  .blog-hero .intro { color: rgba(255,255,255,0.85); max-width: 640px; margin-top: 14px; font-size: 17px; line-height: 1.7; }
+  .blog-list { padding: 72px 0 96px; }
+  .post-card { display: grid; grid-template-columns: 1fr; gap: 8px; border: 1px solid rgba(17,44,82,0.12); border-radius: 14px; padding: 28px 30px; margin-bottom: 22px; background: #fff; transition: transform 0.2s, box-shadow 0.2s; }
+  .post-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .post-card .pc-cat { font-family: 'Inconsolata', monospace; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+  .post-card h2 { font-size: 22px; line-height: 1.3; color: var(--ink); margin: 10px 0 6px; }
+  .post-card p { color: var(--ink-50); font-size: 15.5px; line-height: 1.65; }
+  .post-card .pc-meta { margin-top: 12px; font-family: 'Inconsolata', monospace; font-size: 13px; color: var(--ink-40); }
+  .post-card .go { display: inline-block; margin-top: 8px; font-weight: 700; font-size: 14px; color: var(--accent); }
+  .post-card .go:hover { color: var(--accent-hover); }
+  .post-empty { border: 1px dashed rgba(17,44,82,0.25); border-radius: 14px; padding: 26px 30px; color: var(--ink-40); font-size: 15px; }
+  nav { margin-bottom: 0; }
+  .post-card a { color: inherit; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-row">
+    <a class="brand" href="index.html"><span class="brand-logo">LS</span></a>
+    <div class="nav-right">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open main menu" aria-haspopup="true" aria-expanded="false" aria-controls="menuPanel">
+        <span class="menu-btn-inner" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </span>
+      </button>
+      <div class="menu-panel" id="menuPanel">
+        <a href="index.html"><span class="en">Home</span><span class="es">Inicio</span></a>
+        <a href="qa-lead.html">QA Technical Lead</a>
+        <a href="ba.html">Business Analyst</a>
+        <a href="blog.html"><span class="en">Blog</span><span class="es">Blog</span></a>
+        <a href="mentoring.html"><span class="en">Mentoring</span><span class="es">Mentoría</span></a>
+        <a href="index.html#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="blog-hero">
+  <div class="container">
+    <span class="kicker"><span class="en">Writing &amp; publications</span><span class="es">Escritos y publicaciones</span></span>
+    <h1>Blog</h1>
+    <p class="intro en">Ideas, notes and lessons from 16+ years in QA, business analysis and quality culture - plus experiments like the book my AI teammate and I wrote together.</p>
+    <p class="intro es">Ideas, notas y aprendizajes de 16+ años entre QA, análisis de negocio y cultura de calidad - y experimentos como el libro que mi compañero de IA y yo escribimos juntos.</p>
+  </div>
+</section>
+
+<section class="blog-list">
+  <div class="container">
+    <article class="post-card">
+      <span class="pc-cat"><span class="en">Book</span><span class="es">Libro</span></span>
+      <h2>El libro de mi amigo SAM</h2>
+      <p class="en">The story of how Laura and her AI agent built a working team together - little by little, day by day. A conversation about work, trust and what "doing things well" really means.</p>
+      <p class="es">La historia de cómo Laura y su agente de IA construyeron un equipo que funciona - poco a poco, día a día. Una conversación sobre trabajo, confianza y qué significa "hacer las cosas bien".</p>
+      <span class="pc-meta">2026 &middot; <span class="en">Read the book</span><span class="es">Leer el libro</span></span>
+      <a class="go" href="libro-sam.html"><span class="en">Open &rarr;</span><span class="es">Abrir &rarr;</span></a>
+    </article>
+    <div class="post-empty">
+      <span class="en">More publications coming soon.</span>
+      <span class="es">Más publicaciones en camino.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">Maria Laura Saavedra</div>
+      <p class="footer-desc en">QA Sr Tech Lead | Business Analyst | Scrum Master. 15+ years across FinTech, payment gateways, EdTech, pharma, healthcare and insurance.<br>Montevideo, Uruguay &mdash; available on US time zones.</p>
+      <p class="footer-desc es">QA Sr Tech Lead | Business Analyst | Scrum Master. 15+ años en FinTech, pasarelas de pago, EdTech, pharma, salud y seguros.<br>Montevideo, Uruguay &mdash; disponible en horarios de EE.UU.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-heading"><span class="en">Profiles</span><span class="es">Perfiles</span></div>
+      <a href="qa-lead.html"><span class="en">QA Tech Lead</span><span class="es">QA Tech Lead</span></a>
+      <a href="ba.html"><span class="en">Business Analyst</span><span class="es">Business Analyst</span></a>
+      <a href="blog.html"><span class="en">Blog</span><span class="es">Blog</span></a>
+      <a href="mentoring.html"><span class="en">Mentoring</span><span class="es">Mentoría</span></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span>&copy; <span id="year"></span> Maria Laura Saavedra</span>
+      <span>Montevideo, Uruguay</span>
+      <div class="footer-bottom-links">
+        <a href="privacy.html"><span class="en">Privacy Policy</span><span class="es">Política de privacidad</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('menuBtn').addEventListener('click', function () {
+    var mp = document.getElementById('menuPanel');
+    var open = mp.classList.toggle('open');
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>
+</body>
+</html>

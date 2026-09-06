@@ -4,58 +4,101 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maria Laura Saavedra - Senior Profiles</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232a6dc8'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='18' fill='white'%3ELS%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Maria Laura Saavedra - QA Sr Tech Lead and Business Analyst. 15+ years across FinTech, payment gateways, insurance, healthcare and the public sector. Montevideo, Uruguay.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Open+Sans:wght@400;600;700;800&family=Inconsolata:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260904n">
 </head>
 <body>
 
 <nav>
-  <div class="container">
-    <a class="logo" href="index.html">Maria Laura Saavedra</a>
-    <div class="nav-links">
-      <a class="nav-link-btn" href="qa-lead.html"><span class="en">QA Tech Lead</span><span class="es">QA Tech Lead</span></a>
-      <a class="nav-link-btn" href="ba.html"><span class="en">Business Analyst</span><span class="es">Business Analyst</span></a>
-      <a class="nav-link-btn" href="scrum-master.html"><span class="en">Scrum Master</span><span class="es">Scrum Master</span></a>
-      <a class="nav-link-btn" href="mentoring.html"><span class="en">Mentoring</span><span class="es">Mentoría</span></a>
+  <div class="container nav-row">
+    <span class="brand"><span class="brand-logo">LS</span><span class="brand-name">Maria Laura <br class="brand-br"><span class="brand-name-last">Saavedra</span></span></span>
+    <div class="nav-right">
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open main menu" aria-haspopup="true" aria-expanded="false" aria-controls="menuPanel">
+        <span class="menu-btn-inner" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </span>
+      </button>
+      <div class="menu-panel" id="menuPanel">
+    <a href="index.html"><span class="en">Home</span><span class="es">Inicio</span></a>
+    <a href="qa-lead.html">QA Technical Lead</a>
+    <a href="ba.html">Business Analyst</a>
+    <a href="blog.html"><span class="en">Blog</span><span class="es">Blog</span></a>
+    <a href="mentoring.html"><span class="en">Mentoring</span><span class="es">Mentoría</span></a>
+    <a href="index.html#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
+      </div>
     </div>
-    <button class="lang-btn" id="langBtn" onclick="toggleLang()">ES</button>
   </div>
 </nav>
 
-<header class="hero landing-hero">
-  <div class="container">
-    <span class="hero-label en">Senior IT Professional &mdash; Uruguay</span>
-    <span class="hero-label es">Profesional IT Senior &mdash; Uruguay</span>
-    <h1>Maria Laura Saavedra</h1>
-    <div class="role en">QA Sr Tech Lead | Business Analyst | Scrum Master</div>
-    <div class="role es">QA Sr Tech Lead | Business Analyst | Scrum Master</div>
-    <p class="en">15+ years across FinTech, Payment Gateways, EdTech, Pharma, Healthcare, Insurance and the Public sector. Choose a profile to see my story, experience, projects and skills.</p>
-    <p class="es">15+ años en FinTech, Pasarelas de Pago, EdTech, Pharma, Salud, Seguros y Sector Público. Elegí un perfil para ver mi historia, experiencia, proyectos y habilidades.</p>
-    <div class="hero-proof">
-      <span class="hero-proof-stats en"><strong>15+</strong> years &middot; <strong>4</strong> senior profiles &middot; Montevideo, Uruguay</span>
-      <span class="hero-proof-stats es"><strong>15+</strong> años &middot; <strong>4</strong> perfiles senior &middot; Montevideo, Uruguay</span>
-      <div class="hero-proof-social">
-        <a href="https://www.linkedin.com/in/maria-laura-saavedra-rodriguez-45029432/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
-        </a>
-        <a href="mailto:saalaura@gmail.com" aria-label="Email">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </a>
+<section class="hero-band">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <h1>Maria Laura Saavedra</h1>
+      <div class="hero-title en">QA Technical Lead &amp; Business Analyst</div>
+      <div class="hero-title es">QA Technical Lead &amp; Business Analyst</div>
+      <p class="en">Hands-on quality and process leadership. I help product and engineering teams turn complex business rules into software that is reliable, tested and shipped with confidence.</p>
+      <p class="es">Liderazgo práctico de calidad y procesos. Ayudo a equipos de producto e ingeniería a convertir reglas de negocio complejas en software confiable, probado y entregado con confianza.</p>
+      <div class="hero-proof">
+        <div class="hero-proof-social">
+          <a href="https://www.linkedin.com/in/maria-laura-saavedra-rodriguez-45029432/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          </a>
+          <a href="mailto:saalaura@gmail.com" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="https://www.google.com/maps/search/Montevideo,+Uruguay" target="_blank" rel="noopener" aria-label="Montevideo, Uruguay">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="loc-text">Montevideo, Uruguay</span>
+          </a>
+        </div>
       </div>
     </div>
-    <div class="chips" style="justify-content:center;">
-      <span class="chip">QA Sr Tech Lead</span>
-      <span class="chip">Business Analyst</span>
-      <span class="chip">Scrum Master</span>
-      <span class="chip">Montevideo, Uruguay</span>
+    <div class="hero-side">
+      <div class="hero-box">
+        <div class="hero-box-layer hb-a" aria-hidden="true"></div>
+        <div class="hero-box-layer hb-b" aria-hidden="true"></div>
+        <div class="hero-box-layer hb-c" aria-hidden="true"></div>
+        <div class="hero-box-inner">
+          <span class="hero-box-kicker en">Creative lab</span>
+          <span class="hero-box-kicker es">Laboratorio creativo</span>
+          <a class="hero-box-link en" href="imagenes.html">Generar imágenes &rarr;</a>
+          <a class="hero-box-link es" href="imagenes.html">Generar imágenes &rarr;</a>
+          <a class="hero-box-link en" href="blog.html">Ir al blog &rarr;</a>
+          <a class="hero-box-link es" href="blog.html">Ir al blog &rarr;</a>
+        </div>
+      </div>
     </div>
   </div>
-</header>
+</section>
 
-<section>
+<!-- ============ BANDA EVIDENCIA (borrador v1) ============ -->
+<section class="evidence-band">
+  <div class="container evidence-grid">
+    <div class="evidence-text">
+      <span class="evidence-kicker en">Selected work — QA</span>
+      <span class="evidence-kicker es">Trabajo seleccionado — QA</span>
+      <h2 class="en">LATAM Payment Gateway — QA Technical Lead</h2>
+      <h2 class="es">Pasarela de pagos LATAM — QA Technical Lead</h2>
+      <p class="en">Directed QA strategy across the LATAM region for Fiserv &amp; IPG payment gateway, coordinating global onsite and offshore teams and reporting quality metrics to stakeholders all the way to release sign-off.</p>
+      <p class="es">Dirigí la estrategia QA en la región LATAM de la pasarela de pagos Fiserv &amp; IPG, coordinando equipos globales onsite y offshore y reportando métricas de calidad a los stakeholders hasta el sign-off de release.</p>
+      <span class="evidence-link en">2023–2026 · QA Technical Lead</span>
+      <span class="evidence-link es">2023–2026 · QA Technical Lead</span>
+    </div>
+    <div class="evidence-data">
+      <div class="evidence-item"><span class="evidence-num en">3+</span><span class="evidence-label en">Years leading</span><span class="evidence-num es">3+</span><span class="evidence-label es">Años liderando</span></div>
+      <div class="evidence-item"><span class="evidence-num en">LATAM</span><span class="evidence-label en">Production traffic mirrored with JMeter stress envs</span><span class="evidence-num es">LATAM</span><span class="evidence-label es">Tráfico de producción replicado en ambientes de stress con JMeter</span></div>
+      <div class="evidence-item"><span class="evidence-num en">Global</span><span class="evidence-label en">Onsite / Offshore QA coordination</span><span class="evidence-num es">Global</span><span class="evidence-label es">Coordinación QA Onsite / Offshore</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cards-band">
   <div class="container">
     <div class="cards">
       <a class="profile-card" href="qa-lead.html">
@@ -72,12 +115,12 @@
         <p class="es">Elcitación de requisitos, especificaciones técnicas y casos de uso, criterios de aceptación BDD, mapeo de procesos y gap analysis - traduciendo las reglas de negocio en lo que el equipo construye.</p>
         <span class="go en">Open profile &rarr;</span><span class="go es">Abrir perfil &rarr;</span>
       </a>
-      <a class="profile-card" href="scrum-master.html">
-        <div class="pc-tag en">Profile 03 - Agile</div><div class="pc-tag es">Perfil 03 - Agile</div>
-        <h3 class="en">Scrum Master</h3><h3 class="es">Scrum Master</h3>
-        <p class="en">Agile &amp; Scrum facilitation: sprint ceremonies, backlog grooming, impediment removal and delivery optimization - coaching teams to be autonomous, mature and fast.</p>
-        <p class="es">Facilitación Agile y Scrum: ceremonias de sprint, refinamiento de backlog, eliminación de impedimentos y optimización de la entrega - coachando equipos para que sean autónomos, maduros y rápidos.</p>
-        <span class="go en">Open profile &rarr;</span><span class="go es">Abrir perfil &rarr;</span>
+      <a class="profile-card" href="blog.html">
+        <div class="pc-tag en">Profile 03 - Blog</div><div class="pc-tag es">Perfil 03 - Blog</div>
+        <h3 class="en">Blog</h3><h3 class="es">Blog</h3>
+        <p class="en">Ideas, notes and lessons from 15+ years across QA, business analysis and quality culture - written in plain language.</p>
+        <p class="es">Ideas, notas y aprendizajes de 15+ años entre QA, análisis de negocio y cultura de calidad - escritas en lenguaje simple.</p>
+        <span class="go en">Open blog &rarr;</span><span class="go es">Abrir blog &rarr;</span>
       </a>
       <a class="profile-card" href="mentoring.html">
         <div class="pc-tag en">Profile 04 - People</div><div class="pc-tag es">Perfil 04 - Personas</div>
@@ -87,6 +130,15 @@
         <span class="go en">Open profile &rarr;</span><span class="go es">Abrir perfil &rarr;</span>
       </a>
     </div>
+  </div>
+</section>
+
+<section class="brand-band">
+  <div class="container">
+    <h2 class="en">One practice, three profiles.</h2>
+    <h2 class="es">Una práctica, tres perfiles.</h2>
+    <p class="en">Quality. Process. People.</p>
+    <p class="es">Calidad. Proceso. Personas.</p>
   </div>
 </section>
 
@@ -117,7 +169,7 @@
       <div class="footer-col-heading"><span class="en">Profiles</span><span class="es">Perfiles</span></div>
       <a href="qa-lead.html"><span class="en">QA Tech Lead</span><span class="es">QA Tech Lead</span></a>
       <a href="ba.html"><span class="en">Business Analyst</span><span class="es">Business Analyst</span></a>
-      <a href="scrum-master.html"><span class="en">Scrum Master</span><span class="es">Scrum Master</span></a>
+      <a href="blog.html"><span class="en">Blog</span><span class="es">Blog</span></a>
       <a href="mentoring.html"><span class="en">Mentoring</span><span class="es">Mentoría</span></a>
     </div>
   </div>
@@ -125,6 +177,7 @@
     <div class="footer-bottom-inner">
       <span>&copy; <span id="year"></span> Maria Laura Saavedra</span>
       <span>Montevideo, Uruguay</span>
+      <span class="visit-count"><span class="en">Visits</span><span class="es">Visitas</span>: <span id="visit-counter">…</span></span>
       <div class="footer-bottom-links">
         <a href="privacy.html"><span class="en">Privacy Policy</span><span class="es">Política de privacidad</span></a>
       </div>
@@ -132,27 +185,100 @@
   </div>
 </footer>
 
-<nav class="float-nav" aria-label="Quick nav">
-  <button class="float-toggle" id="floatToggle" aria-label="Menu"><span class="en">Menu</span><span class="es">Menú</span></button>
-  <div class="float-panel" id="floatPanel">
-    <a href="index.html"><span class="en">Home</span><span class="es">Inicio</span></a>
-    <a href="qa-lead.html">QA</a>
-    <a href="ba.html">BA</a>
-    <a href="scrum-master.html">SM</a>
-    <a href="mentoring.html"><span class="en">Mentoring</span><span class="es">Mentoría</span></a>
-  </div>
-</nav>
+
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  function toggleLang() {
-    document.body.classList.toggle('es');
-    document.getElementById('langBtn').textContent = document.body.classList.contains('es') ? 'EN' : 'ES';
-  }
-  document.getElementById('floatToggle').addEventListener('click', function () {
-    document.getElementById('floatPanel').classList.toggle('open');
+  document.getElementById('menuBtn').addEventListener('click', function () {
+    var mp = document.getElementById('menuPanel');
+    var open = mp.classList.toggle('open');
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
+  function onScrollNav() {
+    document.body.classList.toggle('nav-scrolled', window.scrollY > 12);
+  }
+  window.addEventListener('scroll', onScrollNav);
+  onScrollNav();
+
+  (function () {
+    fetch('https://api.countapi.xyz/hit/saalaurabit.github.io-ls/visits')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var el = document.getElementById('visit-counter');
+        if (el) el.textContent = d.value;
+      })
+      .catch(function () { /* silencioso: si el contador falla, la web sigue normal */ });
+  })();
 </script>
-<script src="anti-copy.js"></script>
+
+<!-- ============ LABORATORIO DE DISENO (prueba en vivo de colores/fuente/tema; se quita al fijar el tema final) ============ -->
+<style>
+  .lab-fab {
+    position: fixed; left: 22px; bottom: 22px; z-index: 99;
+    background: var(--accent, #0055ff); color: #fff; border: 0;
+    padding: 10px 16px; border-radius: 999px; font: 600 13px 'Inter', sans-serif;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  .lab-panel {
+    position: fixed; left: 22px; bottom: 72px; z-index: 99;
+    width: 320px; max-width: calc(100vw - 44px);
+    background: #fff; border: 1px solid #e5e5e5; border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); padding: 14px; font: 13px 'Inter', sans-serif;
+  }
+  .lab-panel.hidden { display: none; }
+  .lab-title { font-weight: 700; font-size: 13px; margin-bottom: 8px; color: #0a0a0a; }
+  .lab-input {
+    width: 100%; box-sizing: border-box; padding: 8px 10px; font: 13px 'Inter', monospace;
+    border: 1px solid #d4d4d4; border-radius: 8px; margin-bottom: 8px; color: #1a1a1a;
+  }
+  .lab-run {
+    width: 100%; padding: 8px 10px; font: 600 13px 'Inter', sans-serif; cursor: pointer;
+    background: var(--accent, #0055ff); color: #fff; border: 0; border-radius: 8px;
+  }
+  .lab-log { margin-top: 8px; max-height: 160px; overflow-y: auto; font: 12px 'Inter', monospace; color: #404040; }
+  .lab-log div { padding: 3px 0; border-bottom: 1px dashed #eee; }
+  .lab-hint { font-size: 11.5px; color: #737373; margin-top: 6px; line-height: 1.5; }
+</style>
+<button class="lab-fab" id="labFab" type="button">Diseño</button>
+<div class="lab-panel hidden" id="labPanel">
+  <div class="lab-title">Laboratorio de diseño</div>
+  <input class="lab-input" id="labInput" type="text" placeholder="Ej: COLOR #0055ff | FONT Calibri | THEME #004D4D #A0522D #FFD39B Tahoma | SECTION Servicios Hola" />
+  <button class="lab-run" id="labRun" type="button">Ejecutar</button>
+  <div class="lab-log" id="labLog"></div>
+  <div class="lab-hint">Recargar la página (Ctrl+R) revierte todo. Probá: COLOR, FONT, SIZE, MARGIN, SECTION, THEME.</div>
+</div>
+<script src="design-agent.js"></script>
+<script>
+  (function () {
+    var fab = document.getElementById('labFab');
+    var panel = document.getElementById('labPanel');
+    var input = document.getElementById('labInput');
+    var runBtn = document.getElementById('labRun');
+    var log = document.getElementById('labLog');
+
+    fab.addEventListener('click', function () {
+      panel.classList.toggle('hidden');
+      if (!panel.classList.contains('hidden')) input.focus();
+    });
+
+    function addLog(msg) {
+      var div = document.createElement('div');
+      div.textContent = msg;
+      log.appendChild(div);
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function run() {
+      if (!input.value.trim()) return;
+      var result = designAgent(input.value);
+      addLog(result);
+      input.value = '';
+      input.focus();
+    }
+
+    runBtn.addEventListener('click', run);
+    input.addEventListener('keydown', function (e) { if (e.key === 'Enter') run(); });
+  })();
+</script>
 </body>
 </html>
