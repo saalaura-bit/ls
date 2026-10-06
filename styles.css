@@ -50,7 +50,7 @@ body.es .es-only { display: inline !important; }
 
 /* NAV sobre franja azul navaz de Jhon */
 nav { position: sticky; top: 0; background: var(--navy, #112c52); z-index: 100; transition: background 0.3s ease; }
-.nav-scrolled nav { background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+.nav-scrolled nav { background: var(--navy, #112c52); }
 nav .container { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
 .logo { font-weight: 700; font-size: 15px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
 .logo:hover { color: var(--accent); }
@@ -326,14 +326,16 @@ footer { border-top: 1px solid rgba(255, 255, 255, 0.08); background: var(--navy
 @media (min-width: 992px) { .nav-row { height: 106px; } }
 .nav-scrolled .nav-row { height: 46px; }
 .brand { display: inline-flex; align-items: center; }
+  .brand-logo-img { height: 34px; width: auto; max-width: 120px; object-fit: contain; border-radius: 6px; transition: height 0.3s ease; }
+  .nav-scrolled .brand-logo-img { height: 26px; }
   .brand-logo { font-family: 'Open Sans', Inter, sans-serif; font-weight: 700; font-size: 24px; color: transparent; line-height: 1.14; white-space: nowrap; transition: color 0.3s ease;
   background: linear-gradient(135deg, var(--grad-ls-a-light), var(--grad-ls-b-light));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; }
   .brand-name { font-family: 'Open Sans', Inter, sans-serif; font-weight: 700; font-size: 12px; color: var(--white); margin-left: 10px; letter-spacing: 0.02em; line-height: 1; white-space: nowrap; transition: color 0.3s ease; }
   .brand-name-last { font-size: 16px; }
-  .nav-scrolled .brand-name-last { font-size: 12px; }
-  .nav-scrolled .brand-name { color: var(--ink, #0a0a0a); }
+  .nav-scrolled .brand-name-last { font-size: 14px; }
+  .nav-scrolled .brand-name { color: var(--white); }
 .nav-scrolled .brand-logo { background: linear-gradient(135deg, var(--grad-ls-a), var(--grad-ls-b)); -webkit-text-fill-color: transparent; color: transparent; }
 .nav-scrolled .brand-br { display: none; }
 .nav-right { position: relative; display: flex; align-items: center; }
@@ -344,7 +346,7 @@ footer { border-top: 1px solid rgba(255, 255, 255, 0.08); background: var(--navy
   color: var(--white); border-radius: 6px;
   transition: color 0.3s ease, background var(--transition-fast), transform 0.2s;
 }
-.nav-scrolled .menu-btn { color: var(--ink); }
+.nav-scrolled .menu-btn { color: var(--white); }
 .menu-btn:hover { color: var(--accent); background: var(--ink-10); transform: scale(1.05); }
 .menu-btn-inner {
   display: grid;
