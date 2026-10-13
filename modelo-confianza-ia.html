@@ -1,0 +1,3385 @@
+﻿ï»¿ÃƒÂ¯Ã‚Â»Ã‚Â¿ÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â»Ãƒâ€šÃ‚Â¿<!DOCTYPE html>
+
+
+
+
+
+
+
+<html lang="es">
+
+
+
+
+
+
+
+<head>
+
+
+
+
+
+
+
+<meta charset="UTF-8">
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+
+
+
+<title>De cero a un modelo con IA &mdash; Laura Saavedra&reg;</title>
+
+
+
+
+
+
+
+<meta name="description" content="Building trust in the AI era. From zero to a working model with AI: scalable and sellable. Quality Sense Conf 2026, Montevideo.">
+
+
+
+
+
+
+
+<link rel="icon" type="image/png" href="logos/logo-favicon.png">
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Open+Sans:wght@400;600;700;800&family=Inconsolata:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css?v=20261006-18">
+
+
+
+
+
+
+
+<style>
+
+
+
+
+
+
+
+  /* ===== Idioma: la presentacion abre en ESPANOL =====
+
+
+
+
+
+
+
+     El sitio trae ingles por defecto (y usa .es en el <body> para el otro idioma).
+
+
+
+
+
+
+
+     Aca se invierte igual que en libro-sam.html: sin clase en <body> se ve ES, y la
+
+
+
+
+
+
+
+     clase 'en' muestra EN. (No se usa la clase "es" en el <body> porque el QA de i18n
+
+
+
+
+
+
+
+     del sitio exige pares EN/ES 1:1 en el archivo.) */
+
+
+
+
+
+
+
+  body .es { display: inline !important; }
+
+
+
+
+
+
+
+  body .en { display: none !important; }
+
+
+
+
+
+
+
+  body.en .es { display: none !important; }
+
+
+
+
+
+
+
+  body.en .en { display: inline !important; }
+
+
+
+
+
+
+
+  nav .lang-btn { color: #fff; border-color: rgba(255, 255, 255, 0.45); }
+
+
+
+
+
+
+
+  nav .lang-btn:hover { border-color: #fff; color: #fff; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* ===== Presentacion: cada slide es una tab (colores/tipografias del sitio) ===== */
+
+
+
+
+
+
+
+  .pres-band { background: var(--white); padding: 64px 0 0; }
+
+
+
+
+
+
+
+  .pres-kicker {
+
+
+
+
+
+
+
+    display: block;
+
+
+
+
+
+
+
+    font-family: 'Inconsolata', monospace;
+
+
+
+
+
+
+
+    font-size: 13px;
+
+
+
+
+
+
+
+    font-weight: 700;
+
+
+
+
+
+
+
+    text-transform: uppercase;
+
+
+
+
+
+
+
+    letter-spacing: 0.08em;
+
+
+
+
+
+
+
+    color: var(--accent);
+
+
+
+
+
+
+
+    margin-bottom: 14px;
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .pres-band h1 {
+
+
+
+
+
+
+
+    font-size: clamp(28px, 4vw, 44px);
+
+
+
+
+
+
+
+    font-weight: 600;
+
+
+
+
+
+
+
+    line-height: 1.15;
+
+
+
+
+
+
+
+    letter-spacing: -0.02em;
+
+
+
+
+
+
+
+    color: var(--ink);
+
+
+
+
+
+
+
+    margin-bottom: 12px;
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .pres-sub { font-size: 17px; line-height: 1.7; color: var(--ink-50); max-width: 720px; }
+
+
+
+
+
+
+
+  .pres-meta { display: block; margin-top: 14px; font-size: 13.5px; font-weight: 600; color: var(--ink-40); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* ===== Indice de la presentacion: categorias una debajo de otra ===== */
+
+
+
+
+
+
+
+  .indice {
+
+
+
+
+
+
+
+    margin-top: 34px;
+
+
+
+
+
+
+
+    padding: 26px 0 10px;
+
+
+
+
+
+
+
+    border-top: 1px solid var(--ink-10);
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .indice-title {
+
+
+
+
+
+
+
+    display: block;
+
+
+
+
+
+
+
+    font-family: 'Inconsolata', monospace;
+
+
+
+
+
+
+
+    font-size: 12px;
+
+
+
+
+
+
+
+    font-weight: 700;
+
+
+
+
+
+
+
+    text-transform: uppercase;
+
+
+
+
+
+
+
+    letter-spacing: 0.08em;
+
+
+
+
+
+
+
+    color: var(--ink-40);
+
+
+
+
+
+
+
+    margin-bottom: 8px;
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .tabs { display: flex; flex-direction: column; border-top: 1px solid var(--ink-10); }
+
+
+
+
+
+
+
+  .tab-btn {
+
+
+
+
+
+
+
+    display: grid;
+
+
+
+
+
+
+
+    grid-template-columns: 30px 1fr;
+
+
+
+
+
+
+
+    column-gap: 12px;
+
+
+
+
+
+
+
+    align-items: baseline;
+
+
+
+
+
+
+
+    width: 100%;
+
+
+
+
+
+
+
+    text-align: left;
+
+
+
+
+
+
+
+    font-family: inherit;
+
+
+
+
+
+
+
+    padding: 13px 14px 13px 12px;
+
+
+
+
+
+
+
+    border: none;
+
+
+
+
+
+
+
+    border-bottom: 1px solid var(--ink-10);
+
+
+
+
+
+
+
+    border-left: 3px solid transparent;
+
+
+
+
+
+
+
+    background: transparent;
+
+
+
+
+
+
+
+    cursor: pointer;
+
+
+
+
+
+
+
+    transition: all var(--transition-fast);
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .tab-n {
+
+
+
+
+
+
+
+    grid-row: 1 / span 2;
+
+
+
+
+
+
+
+    font-family: 'Inconsolata', monospace;
+
+
+
+
+
+
+
+    font-size: 12px;
+
+
+
+
+
+
+
+    font-weight: 700;
+
+
+
+
+
+
+
+    color: var(--ink-30);
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .tab-t { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+
+
+
+
+
+
+
+  .tab-d { font-size: 13.5px; font-weight: 500; color: var(--ink-50); line-height: 1.45; margin-top: 2px; }
+
+
+
+
+
+
+
+  .tab-btn:hover { background: #f6f8fb; }
+
+
+
+
+
+
+
+  .tab-btn:hover .tab-t { color: var(--accent); }
+
+
+
+
+
+
+
+  .tab-btn.active { background: #f1f5fa; border-left-color: var(--navy); }
+
+
+
+
+
+
+
+  .tab-btn.active .tab-n, .tab-btn.active .tab-t { color: var(--navy); }
+
+
+
+
+
+
+
+  .tab-panel { display: none; }
+
+
+
+
+
+
+
+  .tab-panel.active { display: block; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .slide { max-width: 860px; padding: 44px 0 72px; border-top: none; }
+
+
+
+
+
+
+
+  .slide h2 { font-size: clamp(22px, 2.4vw, 30px); }
+
+
+
+
+
+
+
+  .slide p { font-size: 16px; line-height: 1.75; color: var(--ink-60); margin-bottom: 16px; max-width: 74ch; }
+
+
+
+
+
+
+
+  .slide ul, .slide ol { margin: 0 0 20px 20px; }
+
+
+
+
+
+
+
+  .slide li { font-size: 16px; line-height: 1.7; color: var(--ink-60); margin-bottom: 10px; }
+
+
+
+
+
+
+
+  .slide strong { color: var(--ink); }
+
+
+
+
+
+
+
+  .slide-home { min-height: 48vh; }
+
+
+
+
+
+
+
+  .sub-role { font-size: 19px; font-weight: 600; color: var(--accent); margin-bottom: 18px; }
+
+
+
+
+
+
+
+  .pres-conf { font-size: clamp(24px, 3.2vw, 38px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; color: var(--accent); margin: 0 0 14px; }
+
+
+
+
+
+
+
+  .pres-meta-inline { display: block; font-size: 13.5px; font-weight: 600; color: var(--ink-40); }
+
+
+
+
+
+
+
+  .quote {
+
+
+
+
+
+
+
+    margin: 0 0 20px;
+
+
+
+
+
+
+
+    padding: 18px 22px;
+
+
+
+
+
+
+
+    border-left: 3px solid var(--accent);
+
+
+
+
+
+
+
+    background: var(--panel);
+
+
+
+
+
+
+
+    border-radius: 0 var(--radius) var(--radius) 0;
+
+
+
+
+
+
+
+    font-size: 16.5px;
+
+
+
+
+
+
+
+    line-height: 1.7;
+
+
+
+
+
+
+
+    color: var(--ink-80);
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .closing {
+
+
+
+
+
+
+
+    margin-top: 26px;
+
+
+
+
+
+
+
+    padding-top: 20px;
+
+
+
+
+
+
+
+    border-top: 1px solid var(--ink-10);
+
+
+
+
+
+
+
+    font-size: 16.5px;
+
+
+
+
+
+
+
+    line-height: 1.7;
+
+
+
+
+
+
+
+    color: var(--ink-50);
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  @media (max-width: 760px) {
+
+
+
+
+
+
+
+    .pres-band { padding: 40px 0 36px; }
+
+
+
+
+
+
+
+    .slide { padding: 32px 0 52px; }
+
+
+
+
+
+
+
+    .tab-btn { grid-template-columns: 24px 1fr; column-gap: 9px; padding: 11px 10px 11px 10px; }
+
+
+
+
+
+
+
+    .tab-n { font-size: 11px; }
+
+
+
+
+
+
+
+    .tab-t { font-size: 14.5px; }
+
+
+
+
+
+
+
+    .tab-d { font-size: 13px; }
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  /* Logos oficiales del evento (Quality Sense Conf 2026) */
+
+
+
+
+
+
+
+  .qs-logo {
+
+
+
+
+
+
+
+    height: 64px;
+
+
+
+
+
+
+
+    width: auto;
+
+
+
+
+
+
+
+    display: block;
+
+
+
+
+
+
+
+    margin: 0 0 18px;
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .org-logo {
+
+
+
+
+
+
+
+    height: 26px;
+
+
+
+
+
+
+
+    width: auto;
+
+
+
+
+
+
+
+    background: var(--navy);
+
+
+
+
+
+
+
+    padding: 5px 8px;
+
+
+
+
+
+
+
+    border-radius: 6px;
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  .org-credito {
+
+
+
+
+
+
+
+    display: flex;
+
+
+
+
+
+
+
+    align-items: center;
+
+
+
+
+
+
+
+    justify-content: center;
+
+
+
+
+
+
+
+    gap: 10px;
+
+
+
+
+
+
+
+    flex-wrap: wrap;
+
+
+
+
+
+
+
+    margin-top: 10px;
+
+
+
+
+
+
+
+    font-size: 13px;
+
+
+
+
+
+
+
+    font-weight: 600;
+
+
+
+
+
+
+
+    color: var(--ink-40);
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav>
+
+
+
+
+
+
+
+  <div class="container nav-row">
+
+
+
+
+
+
+
+    <span class="brand"><img src="logos/logo-ls.jpg" alt="Laura Saavedra" class="brand-logo-img"><span class="brand-name"><span class="brand-name-last">Laura Saavedra&reg;</span></span></span>
+
+
+
+
+
+
+
+    <div class="nav-right">
+
+
+
+
+
+
+
+      <button class="lang-btn" id="langBtn" type="button" onclick="toggleLang()">EN</button>
+
+
+
+
+
+
+
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open main menu" aria-haspopup="true" aria-expanded="false" aria-controls="menuPanel">
+
+
+
+
+
+
+
+        <span class="menu-btn-inner" aria-hidden="true">
+
+
+
+
+
+
+
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+
+
+
+
+
+
+
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+
+
+
+
+
+
+
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+
+
+
+
+
+
+
+        </span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <div class="menu-panel" id="menuPanel">
+
+
+
+
+
+
+
+    <a href="index.html"><span class="en">Home</span><span class="es">Inicio</span></a>
+
+
+
+
+
+
+
+    <a href="qa-lead.html">QA Technical Lead</a>
+
+
+
+
+
+
+
+    <a href="ba.html">Business Analyst</a>
+
+
+
+
+
+
+
+    <a href="blog.html"><span class="en">Blog</span><span class="es">Blog</span></a>
+
+
+
+
+
+
+
+      <a href="mentoring.html"><span class="en">Mentoring</span><span class="es">Mentoría</span></a>
+
+
+
+
+
+
+
+    <a href="modelo-confianza-ia.html"><span class="en">From zero to a model</span><span class="es">De cero a un modelo</span></a>
+
+
+
+
+
+
+
+    <a href="index.html#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="pres-band">
+
+
+
+
+
+
+
+  <div class="container">
+
+
+
+
+
+
+
+    <span class="pres-kicker"><span class="en"><strong>Quality Sense Conf 2026</strong> &mdash; Building trust in the AI era</span><span class="es"><strong>Quality Sense Conf 2026</strong> &mdash; Construir confianza en la era de la IA</span></span>
+
+
+
+
+
+
+
+    <h1><span class="en">From zero to a model</span><span class="es">De cero a un modelo</span></h1>
+
+
+
+
+
+
+
+    <p class="pres-sub"><span class="en">A way of working with AI: scalable and sellable. One model, not a trick.</span><span class="es">Un modelo de trabajo con IA: escalable y vendible. Un modelo, no un truco.</span></p>
+
+
+
+
+
+
+
+    <span class="pres-meta">Laura Saavedra&reg; &mdash; Quality Sense Conf 2026 &mdash; Montevideo, Uruguay</span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Indice: cada hoja es una categoria; el titulo dice de que habla y la linea de abajo lo explica -->
+
+
+
+
+
+
+
+    <div class="indice">
+
+
+
+
+
+
+
+      <span class="indice-title"><span class="en">Index of the talk</span><span class="es">&Iacute;ndice de la charla</span></span>
+
+
+
+
+
+
+
+      <div class="tabs" role="tablist">
+
+
+
+
+
+
+
+      <button class="tab-btn active" data-tab="t1" onclick="showTab('t1', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">01</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">Start</span><span class="es">Inicio</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">What this talk is about: one way of working with AI, scalable and sellable</span><span class="es">De qu&eacute; se trata la charla: un modelo de trabajo con IA, escalable y vendible</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="t2" onclick="showTab('t2', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">02</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">From zero</span><span class="es">De cero</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">The first question and the first steps: scripts and small tasks done well</span><span class="es">La primera pregunta y los primeros pasos: scripts y tareas chicas bien hechas</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="t3" onclick="showTab('t3', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">03</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">Scaling</span><span class="es">Escalar</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">Research and test: keep what works and move one validated step at a time</span><span class="es">Investigar y probar: quedarse con lo que funciona y avanzar un paso validado por vez</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="t4" onclick="showTab('t4', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">04</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">Trust</span><span class="es">Confianza</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">Between the person who sets the course and the agent that builds</span><span class="es">Entre la persona que marca el rumbo y el agente que construye</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="t5" onclick="showTab('t5', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">05</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">Principles</span><span class="es">Principios</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">The non-technical rules that made the team work: report, one thing at a time, quality over speed</span><span class="es">Las reglas no t&eacute;cnicas que hicieron funcionar al equipo: informar, una cosa por vez, calidad antes que velocidad</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="tmiedo" onclick="showTab('tmiedo', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">06</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">Fear &amp; coupling</span><span class="es">El miedo y el acople</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">The fear of being replaced, and how the AI couples with the professional</span><span class="es">El miedo a ser reemplazados y c&oacute;mo se acopla la IA al profesional</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="t6" onclick="showTab('t6', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">07</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">The model</span><span class="es">El modelo</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">Its three properties: scalable, transferable and sellable</span><span class="es">Sus tres propiedades: escalable, transferible y vendible</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="t7" onclick="showTab('t7', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">08</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">2026 testing cycle</span><span class="es">El ciclo de testing 2026</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">It starts with the BA: traceability, validation and what gets automated</span><span class="es">Empieza con el BA: trazabilidad, validaci&oacute;n y qu&eacute; se automatiza</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="t8" onclick="showTab('t8', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">09</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">Security</span><span class="es">Seguridad</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">Secrets, permissions and a supervisor on the team</span><span class="es">Secretos, permisos y un supervisor dentro del equipo</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="tsdlc" onclick="showTab('tsdlc', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">10</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">Our area in the SDLC</span><span class="es">Nuestra &aacute;rea en el SDLC</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">What today&rsquo;s AI covers and what it doesn&rsquo;t: the testing space</span><span class="es">Qu&eacute; cubre hoy la IA y qu&eacute; no: el espacio del testing</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      <button class="tab-btn" data-tab="t9" onclick="showTab('t9', this)">
+
+
+
+
+
+
+
+        <span class="tab-n">11</span>
+
+
+
+
+
+
+
+        <span class="tab-t"><span class="en">The analysis</span><span class="es">El an&aacute;lisis</span></span>
+
+
+
+
+
+
+
+        <span class="tab-d"><span class="en">Where we arrived: the conclusions of the talk</span><span class="es">D&oacute;nde llegamos: las conclusiones de la charla</span></span>
+
+
+
+
+
+
+
+      </button>
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 1 -->
+
+
+
+
+
+
+
+  <section class="tab-panel active slide slide-home" id="t1">
+
+
+
+
+
+
+
+    <img class="qs-logo" src="logos/qsconf-2026.svg" alt="Quality Sense Conf 2026">
+
+
+
+
+
+
+
+    <p class="sub-role"><span class="en">A way of working with AI: scalable and sellable</span><span class="es">Un modelo de trabajo con IA: escalable y vendible</span></p>
+
+
+
+
+
+
+
+    <p class="pres-conf"><span class="en">Quality Sense Conf 2026 &mdash; Montevideo.</span><span class="es">Quality Sense Conf 2026 &mdash; Montevideo.</span></p>
+
+
+
+
+
+
+
+    <p class="pres-meta-inline">Laura Saavedra&reg;</p>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 2 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="t2">
+    <h2><span class="en">Starting from zero</span><span class="es">Empezar de cero</span></h2>
+    <p><span class="en">It all started with one simple question: what can a person, together with an AI, actually build?</span><span class="es">Todo empezó con una pregunta simple: ¿qué puede construir, de verdad, una persona junto a una IA?</span></p>
+    <p><span class="en">This was not about theory. It was about solving a real problem, creating an agent, and deciding to try.</span><span class="es">No era teoría: era resolver un problema real, crear un agente y decidir intentarlo.</span></p>
+    <p><span class="en">Laura started by thinking: how could she work with AI to build her own framework?</span><span class="es">Laura comenzó a preguntarse: cómo podía trabajar con IA para crear su propio framework.</span></p>
+    <p><span class="en">She chose Opencode, installed it, reviewed the tools and programmed complementary ones (Python, etc.). The interaction became more natural and, little by little, an agent began to emerge.</span><span class="es">Eligió Opencode, lo instaló, revisó sus herramientas y programó las complementarias (Python, etc.). La interacción fue volviéndose más natural y, poco a poco, empezó a surgir un Agente.</span></p>
+    <p><span class="en">We started with small tasks, step by step, validated one at a time. As SAM said: "Start with small tasks, do them well, and move forward one validated step at a time."</span><span class="es">Empezamos por tareas chicas, paso a paso, validando una por vez. Como decía SAM: "Empezar con tareas chicas, hacerlas bien y avanzar un paso validado por vez."</span></p>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 3 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="t3">
+    <h2><span class="en">Scaling</span><span class="es">Escalar</span></h2>
+    <p><span class="en">As we grew, we kept inserting improvements into the code. We were no longer just one person: SAM was growing too.</span><span class="es">A medida que avanzábamos, fuimos incorporando mejoras al código. Ya no éramos una sola persona: SAM también estaba creciendo.</span></p>
+    <p><span class="en">Laura asked SAM to research, validate and find tools to improve the code, adding unit tests to SAM code and to everything we built. More builder and modeling agents joined the team.</span><span class="es">Laura pidió a SAM que investigara, validara y buscara herramientas para mejorar el código, agregando tests unitarios al propio código de SAM y a todo lo que construíamos. Se sumaron más agentes constructores y modeladores.</span></p>
+    <p><span class="en">The testing cycle came first: it allowed us to use it for everything we would create later, validating our tasks alongside QA.</span><span class="es">El ciclo de testing fue lo primero: nos permitió aplicarlo a todo lo que íbamos a crear y validar nuestras tareas junto a QA.</span></p>
+    <p><span class="en">We also built a WhatsApp bot for navigation support for Coorporavia Executive transport.</span><span class="es">También construimos un bot en WhatsApp para soporte de navegación de la empresa de transporte Coorporavia (Ejecutiva).</span></p>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 4 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="t4">
+    <h2><span class="en">Trust</span><span class="es">Confianza</span></h2>
+    <p><span class="en">What held everything together was not a tool, but trust: trust between the person who sets the course and the agent that builds.</span><span class="es">Lo que sostuvo todo el crecimiento no fue una herramienta, sino la confianza: entre la persona que marca el rumbo y el agente que construye.</span></p>
+    <p><span class="en">Our most powerful AI agent, SAM, proposed the title "From zero to a model". The team agreed and moved forward.</span><span class="es">Nuestro agente de IA más potente, SAM, propuso el título "De cero a un modelo". El equipo estuvo de acuerdo y avanzamos.</span></p>
+    <p><span class="en">The key question we asked ourselves: are we just telling how we built trust, or are we making sure our conclusions are valid?</span><span class="es">La pregunta clave: ¿solo vamos a contar cómo generamos confianza, o también a asegurarnos de que nuestras conclusiones sean válidas?</span></p>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 5 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="t5">
+
+
+
+
+
+
+
+    <h2><span class="en">Principles</span><span class="es">Principios</span></h2>
+
+
+
+
+
+
+
+    <p><span class="en">The rules that made this work aren&rsquo;t technical. They are principles: report failures immediately, one thing at a time, don&rsquo;t publish without approval, quality over speed.</span><span class="es">Las reglas que hicieron funcionar esto no son t&eacute;cnicas. Son principios: informar los fallos al momento, una cosa por vez, no publicar sin aprobaci&oacute;n, calidad antes que velocidad.</span></p>
+
+
+
+
+
+
+
+    <div class="quote"><span class="en">&ldquo;Speed is not quality. Better to do it right once than fast and wrong.&rdquo;</span><span class="es">&laquo;Velocidad no es calidad. Mejor hacerlo bien una vez que r&aacute;pido y mal.&raquo;</span></div>
+
+
+
+
+
+
+
+    <p><span class="en">Tools solved the tasks. The principles built the team.</span><span class="es">Las herramientas resolvieron las tareas. Los principios construyeron el equipo.</span></p>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 6 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="tmiedo">
+
+
+
+
+
+
+
+    <h2><span class="en">Fear &amp; coupling</span><span class="es">El miedo y el acople</span></h2>
+
+
+
+
+
+
+
+    <p><span class="en">It all started with one fear: that the AI would replace us. The order of the problem had to change first.</span><span class="es">Todo empez&oacute; con un miedo: que la IA nos reemplazara. Primero hubo que cambiar el orden del problema.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">Coupling is the real challenge: knowing what the AI does, what the person does, and where each one decides.</span><span class="es">El acople es el desaf&iacute;o real: saber qu&eacute; hace la IA, qu&eacute; hace la persona y d&oacute;nde decide cada una.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">Done well, coupling doesn&rsquo;t replace the professional: it amplifies them.</span><span class="es">Bien hecho, el acople no reemplaza al profesional: lo potencia.</span></p>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 7 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="t6">
+
+
+
+
+
+
+
+    <h2><span class="en">The model</span><span class="es">El modelo</span></h2>
+
+
+
+
+
+
+
+    <p><span class="en">This isn&rsquo;t a person who got lucky with a chat. It&rsquo;s a model with three properties:</span><span class="es">Esto no es una persona a la que le sali&oacute; bien un chat. Es un modelo con tres propiedades:</span></p>
+
+
+
+
+
+
+
+    <ul>
+
+
+
+
+
+
+
+      <li><span class="en"><strong>Scalable:</strong> it grows project by project; it isn&rsquo;t rebuilt from scratch every time.</span><span class="es"><strong>Escalable:</strong> crece proyecto a proyecto; no se rearma de cero cada vez.</span></li>
+
+
+
+
+
+
+
+      <li><span class="en"><strong>Transferable:</strong> the same model works for QA, BA, development, documentation or operations.</span><span class="es"><strong>Transferible:</strong> el mismo modelo sirve para QA, BA, desarrollo, documentaci&oacute;n u operaciones.</span></li>
+
+
+
+
+
+
+
+      <li><span class="en"><strong>Sellable:</strong> it&rsquo;s a product with a method behind it, not an anecdote.</span><span class="es"><strong>Vendible:</strong> es un producto con un m&eacute;todo detr&aacute;s, no una an&eacute;cdota.</span></li>
+
+
+
+
+
+
+
+    </ul>
+
+
+
+
+
+
+
+    <p><span class="en">A model can be shown, repeated and taught. Anecdotes can&rsquo;t.</span><span class="es">Un modelo se puede mostrar, repetir y ense&ntilde;ar. Una an&eacute;cdota, no.</span></p>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 8 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="t7">
+
+
+
+
+
+
+
+    <h2><span class="en">The 2026 testing cycle</span><span class="es">El ciclo de testing 2026</span></h2>
+
+
+
+
+
+
+
+    <p><span class="en">Our future testing cycle starts with the BA, always: a QA analyzes the business in depth.</span><span class="es">Nuestro futuro ciclo de testing comienza con el BA, siempre: un QA analiza el negocio a fondo.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">Starting together with the BA means order and clear lines from day one.</span><span class="es">Arrancar junto al BA significa orden y l&iacute;neas claras desde el d&iacute;a uno.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">US to test cases means traceability, and traceability means nobody loses the thread.</span><span class="es">De la US a los casos de prueba hay trazabilidad, y con trazabilidad nadie pierde el hilo.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">The BA cross-checks data and validates it with QA, so we don&rsquo;t get too many or too few test cases.</span><span class="es">El BA cruza datos y los valida con QA, para no tener casos de prueba de m&aacute;s ni de menos.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">Two things matter here:</span><span class="es">Ac&aacute; hay dos cosas que importan:</span></p>
+
+
+
+
+
+
+
+    <ul>
+
+
+
+
+
+
+
+      <li><span class="en">The BA builds their agent from their business vision: metrics and requirements to cover.</span><span class="es">El BA arma su agente desde su visi&oacute;n de negocio: m&eacute;tricas y requerimientos a cubrir.</span></li>
+
+
+
+
+
+
+
+      <li><span class="en">QA has its own processes, defined by its own agents.</span><span class="es">QA tiene sus propios procesos, definidos por sus propios agentes.</span></li>
+
+
+
+
+
+
+
+    </ul>
+
+
+
+
+
+
+
+    <p><span class="en">There will be disagreements &mdash; and that&rsquo;s fine. <strong>What can&rsquo;t happen is moving forward without resolving them: that gap is where quality is defined.</strong></span><span class="es">Va a haber discrepancias &mdash; y est&aacute; bien. <strong>Lo que no puede pasar es seguir sin resolverlas: esa brecha es donde se define la calidad.</strong></span></p>
+
+
+
+
+
+
+
+    <p><span class="en">After that, executions are validated and QA selects which test cases get automated.</span><span class="es">Despu&eacute;s de eso, se validan las ejecuciones y QA selecciona qu&eacute; casos de prueba se automatizan.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">Stages are validated based on what the client needs: Scrum or Kanban, always on an Agile base.</span><span class="es">Las etapas se validan seg&uacute;n lo que necesite el cliente: Scrum o Kanban, siempre sobre base Agile.</span></p>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 9 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="t8">
+
+
+
+
+
+
+
+    <h2><span class="en">Security</span><span class="es">Seguridad</span></h2>
+
+
+
+
+
+
+
+    <p><span class="en">The AI works with what it&rsquo;s given. If it&rsquo;s given secrets, it exposes them. That is a real risk, and it has to be watched.</span><span class="es">La IA trabaja con lo que se le da. Si se le dan secretos, los expone. Eso es un riesgo real y hay que vigilarlo.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">A supervisor is part of the team: it watches the whole session, keeps secrets out of sight, checks permissions and reports without being asked.</span><span class="es">Un supervisor es parte del equipo: vigila toda la sesi&oacute;n, mantiene los secretos fuera de vista, revisa permisos y reporta sin que se lo pidan.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">Security is a design decision, not a patch at the end.</span><span class="es">La seguridad es una decisi&oacute;n de dise&ntilde;o, no un parche al final.</span></p>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 10 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="tsdlc">
+
+
+
+
+
+
+
+    <h2><span class="en">Our area, key in the SDLC</span><span class="es">Nuestra &aacute;rea, clave en el SDLC</span></h2>
+
+
+
+
+
+
+
+    <p><span class="en">By building it ourselves, we understood something we suspected: our area is key in the SDLC.</span><span class="es">Al construir nosotros mismos, entendimos algo que sospech&aacute;bamos: nuestra &aacute;rea es clave en el SDLC.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">And today&rsquo;s AI, when it doesn&rsquo;t hallucinate, fails with known errors.</span><span class="es">Y la IA de hoy, cuando no alucina, falla con errores conocidos.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">We have to watch the results it gives us: limited, and uneven in quality.</span><span class="es">Tenemos que mirar con atenci&oacute;n los resultados que devuelve: limitados y de calidad dispar.</span></p>
+
+
+
+
+
+
+
+    <p><span class="en">And the thing that shouldn&rsquo;t happen is happening: badly tested products are being pushed to production.</span><span class="es">Y pasa lo que no deber&iacute;a pasar: se est&aacute;n poniendo en producci&oacute;n productos mal testeados.</span></p>
+
+
+
+
+
+
+
+    <div class="quote"><span class="en">&ldquo;That&rsquo;s testing&rsquo;s space: what AI doesn&rsquo;t cover yet, and what the business can&rsquo;t skip.&rdquo;</span><span class="es">&laquo;Ese es el espacio del testing: lo que la IA todav&iacute;a no cubre y el negocio no puede saltear.&raquo;</span></div>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Slide 11 -->
+
+
+
+
+
+
+
+  <section class="tab-panel slide" id="t9">
+
+
+
+
+
+
+
+    <h2><span class="en">The analysis</span><span class="es">El an&aacute;lisis</span></h2>
+
+
+
+
+
+
+
+    <p><span class="en">This is where we arrived &mdash; and these are the conclusions I want to leave you with:</span><span class="es">Ac&aacute; es donde llegamos &mdash; y estas son las conclusiones que quiero dejarles:</span></p>
+
+
+
+
+
+
+
+    <ol>
+
+
+
+
+
+
+
+      <li><span class="en">The testing path doesn&rsquo;t have to win trust: <strong>that trust is already earned</strong>.</span><span class="es">El camino del testing no tiene que ganarse la confianza: <strong>esa confianza ya est&aacute; ganada</strong>.</span></li>
+
+
+
+
+
+
+
+      <li><span class="en">Every professional, from their own profile, can create agents, build their cycle and automate.</span><span class="es">Cada profesional, desde su propio perfil, puede crear agentes, armar su ciclo y automatizar.</span></li>
+
+
+
+
+
+
+
+      <li><span class="en">Lead profiles are the ones that validate the framework.</span><span class="es">Los perfiles de lead son los que validan el framework.</span></li>
+
+
+
+
+
+
+
+      <li><span class="en">And one more: we are trained for this. We are analytical and critical by nature.</span><span class="es">Y una m&aacute;s: estamos capacitados para esto. Somos anal&iacute;ticos y cr&iacute;ticos por naturaleza.</span></li>
+
+
+
+
+
+
+
+    </ol>
+
+
+
+
+
+
+
+    <div class="closing"><span class="en">Thank you Abstracta, Federico Toledo and his team for this space, for receiving us in this moment of growth, empowerment and for showing the value and place of quality alongside AI.</span><span class="es">Gracias Abstracta, Federico Toledo y su equipo por este espacio, por recibirnos en este momento de crecer, empoderarnos y mostrar el valor y lugar de la calidad de la mano de la IA.</span></div>
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer>
+
+
+
+
+
+
+
+  <div class="footer-grid">
+
+
+
+
+
+
+
+    <div class="footer-brand">
+
+
+
+
+
+
+
+      <div class="footer-logo">Laura Saavedra&reg;</div>
+
+
+
+
+
+
+
+      <p class="footer-desc en">QA Sr Tech Lead | Business Analyst | Scrum Master. 15+ years across FinTech, payment gateways, EdTech, pharma, healthcare and insurance.<br>Montevideo, Uruguay &mdash; available on US time zones.</p>
+
+
+
+
+
+
+
+      <p class="footer-desc es">QA Sr Tech Lead | Business Analyst | Scrum Master. 15+ aÃƒÆ’Ã‚Æ’Ãƒâ€šÃ‚Â±os en FinTech, pasarelas de pago, EdTech, pharma, salud y seguros.<br>Montevideo, Uruguay &mdash; disponible en horarios de EE.UU.</p>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="footer-col">
+
+
+
+
+
+
+
+      <div class="footer-col-heading"><span class="en">Profiles</span><span class="es">Perfiles</span></div>
+
+
+
+
+
+
+
+      <a href="qa-lead.html"><span class="en">QA Tech Lead</span><span class="es">QA Tech Lead</span></a>
+
+
+
+
+
+
+
+      <a href="ba.html"><span class="en">Business Analyst</span><span class="es">Business Analyst</span></a>
+
+
+
+
+
+
+
+      <a href="blog.html"><span class="en">Blog</span><span class="es">Blog</span></a>
+
+
+
+
+
+
+
+      <a href="mentoring.html"><span class="en">Mentoring</span><span class="es">Mentoría</span></a>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+  <div class="footer-bottom">
+
+
+
+
+
+
+
+    <div class="footer-bottom-inner">
+
+
+
+
+
+
+
+      <span>&copy; <span id="year"></span> Laura Saavedra&reg;</span>
+
+
+
+
+
+
+
+      <span>Montevideo, Uruguay</span>
+
+
+
+
+
+
+
+      <div class="footer-bottom-links">
+
+
+
+
+
+
+
+        <a href="privacy.html"><span class="en">Privacy Policy</span><span class="es">Política de privacidad</span></a>
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="org-credito">
+
+
+
+
+
+
+
+       <span class="en">Quality Sense Conf 2026 &mdash; organized by Abstracta, thanks to Federico Toledo and his team</span>
+
+
+
+
+
+
+
+       <span class="es">Quality Sense Conf 2026 &mdash; organizada por Abstracta, gracias a Federico Toledo y su equipo</span>
+
+
+
+
+
+
+
+      <img class="org-logo" src="logos/abstracta.svg" alt="Abstracta">
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  document.getElementById('menuBtn').addEventListener('click', function () {
+
+
+
+
+
+
+
+    var mp = document.getElementById('menuPanel');
+
+
+
+
+
+
+
+    var open = mp.classList.toggle('open');
+
+
+
+
+
+
+
+    this.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+
+
+
+
+
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function onScrollNav() {
+
+
+
+
+
+
+
+    document.body.classList.toggle('nav-scrolled', window.scrollY > 12);
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+  window.addEventListener('scroll', onScrollNav);
+
+
+
+
+
+
+
+  onScrollNav();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function showTab(id, btn) {
+
+
+
+
+
+
+
+    var panels = document.querySelectorAll('.tab-panel');
+
+
+
+
+
+
+
+    for (var i = 0; i < panels.length; i++) { panels[i].classList.remove('active'); }
+
+
+
+
+
+
+
+    var buttons = document.querySelectorAll('.tab-btn');
+
+
+
+
+
+
+
+    for (var j = 0; j < buttons.length; j++) { buttons[j].classList.remove('active'); }
+
+
+
+
+
+
+
+    document.getElementById(id).classList.add('active');
+
+
+
+
+
+
+
+    btn.classList.add('active');
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function toggleLang() {
+
+
+
+
+
+
+
+    var en = document.body.classList.toggle('en');
+
+
+
+
+
+
+
+    document.getElementById('langBtn').textContent = en ? 'ES' : 'EN';
+
+
+
+
+
+
+
+    document.documentElement.lang = en ? 'en' : 'es';
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
