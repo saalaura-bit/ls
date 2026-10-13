@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Construir confianza en la era de la IA — de cero a un equipo con IA, paso a paso. Quality Sense Conf 2026.">
+<title>Construir confianza en la era de la IA</title>
+<style>
+  :root {
+    --papel: #faf6ef;
+    --tinta: #2b2b2b;
+    --acento: #8a5a2b;
+    --gris: #6b6b6b;
+    --linea: #e3d9c8;
+    --resaltado: #f3ead8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: var(--papel);
+    color: var(--tinta);
+    line-height: 1.7;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  .top-bar img { height: 44px; width: auto; }
+  .lang-btn {
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 0.35rem 1rem;
+    border: 1px solid var(--linea);
+    border-radius: 20px;
+    background: var(--resaltado);
+    color: var(--tinta);
+    cursor: pointer;
+  }
+  .lang-btn:hover { border-color: var(--acento); }
+  /* Portada */
+  .cover {
+    text-align: center;
+    padding: 3rem 1rem 3rem;
+    border-bottom: 1px solid var(--linea);
+    margin-bottom: 2.5rem;
+  }
+  .cover .kicker {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 1.5rem;
+  }
+  .cover h1 {
+    font-size: 2.6rem;
+    font-weight: normal;
+    margin-bottom: 0.5rem;
+  }
+  .cover h1 .es { display: block; }
+  .cover h1 .en { display: none; }
+  .cover .subtitle {
+    font-size: 1.05rem;
+    color: var(--acento);
+    font-style: italic;
+    margin-top: 1rem;
+  }
+  .cover .subtitle .es { display: block; }
+  .cover .subtitle .en { display: none; }
+  .cover .author {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--gris);
+  }
+  /* Dedicatoria */
+  .dedication {
+    text-align: center;
+    font-style: italic;
+    color: var(--gris);
+    padding: 2rem 1rem;
+    border-bottom: 1px solid var(--linea);
+    margin-bottom: 2.5rem;
+  }
+  .dedication .es { display: block; }
+  .dedication .en { display: none; }
+  /* Indice */
+  .toc {
+    margin-bottom: 3rem;
+  }
+  .toc h2 {
+    font-size: 1.1rem;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris);
+    border-bottom: 1px solid var(--linea);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .toc ol { list-style: none; }
+  .toc li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px dotted var(--linea);
+  }
+  .toc a {
+    text-decoration: none;
+    color: var(--tinta);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .toc a:hover { color: var(--acento); }
+  .toc .num { color: var(--acento); margin-right: 1rem; }
+  .toc .title-like { flex: 1; }
+  .toc .title-like .en { display: none; margin-left: 0.5rem; }
+  .toc .title-like { display: block; }
+  .toc .desc { display: block; font-size: 0.92rem; line-height: 1.5; color: var(--gris); margin-top: 3px; }
+  .toc .desc.es { display: block; }
+  .toc .desc.en { display: none; }
+  /* Capitulos */
+  .chapter {
+    margin-bottom: 4rem;
+  }
+  .chapter .chapter-head {
+    border-bottom: 1px solid var(--linea);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .chapter .chapter-label {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 0.3rem;
+  }
+  .chapter h2 {
+    font-size: 1.7rem;
+    font-weight: normal;
+  }
+  .chapter h2 .es { display: block; }
+  .chapter h2 .en { display: none; }
+  .chapter p {
+    margin-bottom: 1.1rem;
+    font-size: 1.05rem;
+  }
+  .chapter p.es { display: block; }
+  .chapter p.en { display: none; }
+  .chapter ul { margin: 0 0 1.1rem 1.2rem; }
+  .chapter li { font-size: 1.05rem; margin-bottom: 0.4rem; }
+  .chapter ul .es { display: list-item; }
+  .chapter ul .en { display: none; }
+  .quote {
+    margin: 0 0 1.4rem;
+    padding: 0.8rem 1.2rem;
+    border-left: 3px solid var(--acento);
+    background: var(--resaltado);
+    font-style: italic;
+  }
+  .quote .es { display: block; }
+  .quote .en { display: none; }
+  .hash {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--acento);
+  }
+  .hash .es { display: block; }
+  .hash .en { display: none; }
+  /* Cierre */
+  .closing {
+    text-align: center;
+    font-style: italic;
+    color: var(--gris);
+    padding: 2rem 1rem;
+    border-top: 1px solid var(--linea);
+    margin-top: 3rem;
+  }
+  .closing .es { display: block; }
+  .closing .en { display: none; }
+  .site-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--acento);
+    text-decoration: none;
+    font-style: normal;
+    font-size: 0.9rem;
+  }
+  .site-link:hover { text-decoration: underline; }
+  .footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--gris);
+    margin-top: 2rem;
+  }
+  /* Modo EN */
+  body.en .cover h1 .es, body.en .cover .subtitle .es,
+  body.en .dedication .es, body.en .chapter h2 .es,
+  body.en .chapter p.es, body.en .chapter ul .es,
+  body.en .quote .es, body.en .closing .es,
+  body.en .hash .es, body.en .toc .title-like .es,
+  body.en .toc .desc.es { display: none; }
+  body.en .cover h1 .en, body.en .cover .subtitle .en,
+  body.en .dedication .en, body.en .chapter h2 .en,
+  body.en .chapter p.en, body.en .chapter ul .en,
+  body.en .quote .en, body.en .closing .en,
+  body.en .hash .en, body.en .toc .title-like .en,
+  body.en .toc .desc.en { display: block; }
+  body.en .chapter ul .en { display: list-item; }
+  /* Identidad Quality Sense Conf 2026 (logos oficiales del evento) */
+  .conf-logo {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .conf-logo img { height: 78px; width: auto; }
+  .footer .org {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+  }
+  .footer .org .es { display: inline; }
+  .footer .org .en { display: none; }
+  body.en .footer .org .es { display: none; }
+  body.en .footer .org .en { display: inline; }
+  .footer .org img {
+    height: 26px;
+    width: auto;
+    background: #021B39;
+    padding: 5px 8px;
+    border-radius: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="top-bar">
+    <img src="logos/logo-ls.jpg" alt="Laura Saavedra">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+  </div>
+
+  <div class="conf-logo"><img src="logos/qsconf-2026.svg" alt="Quality Sense Conf 2026"></div>
+
+  <!-- Portada -->
+  <div class="cover">
+    <div class="kicker">
+      <span class="es">Construir confianza en la era de la IA</span>
+      <span class="en">Building trust in the AI era</span>
+    </div>
+    <h1>
+      <span class="es">De cero a un equipo con IA</span>
+      <span class="en">From zero to an AI team</span>
+    </h1>
+    <div class="subtitle">
+      <span class="es">Lo que aprendimos construyendo, paso a paso, un ciclo de testing con IA</span>
+      <span class="en">What we learned building, step by step, a testing cycle with AI</span>
+    </div>
+    <div class="author">Maria Laura Saavedra &middot; Quality Sense Conf 2026</div>
+  </div>
+
+  <!-- Dedicatoria -->
+  <div class="dedication">
+    <span class="es">A quien empieza de cero y no se rinde: se puede.</span>
+    <span class="en">To whoever starts from zero and doesn&rsquo;t give up: it&rsquo;s possible.</span>
+  </div>
+
+  <!-- Indice -->
+  <div class="toc">
+    <h2>
+      <span class="es">Contenido</span>
+      <span class="en">Contents</span>
+    </h2>
+    <ol>
+      <li><a href="#cap1"><span class="num">1</span><span class="title-like"><span class="es">Empezar de cero</span><span class="en">Starting from zero</span><span class="desc es">La primera pregunta y los primeros pasos, sin gran arquitectura.</span><span class="desc en">The first question and the first steps, with no big architecture.</span></span></a></li>
+      <li><a href="#cap2"><span class="num">2</span><span class="title-like"><span class="es">Investigar y escalar</span><span class="en">Research and scale</span><span class="desc es">Qu&eacute; herramientas hab&iacute;a, qu&eacute; funcion&oacute; y c&oacute;mo se escal&oacute; paso a paso.</span><span class="desc en">What tools existed, what worked and how we scaled step by step.</span></span></a></li>
+      <li><a href="#cap3"><span class="num">3</span><span class="title-like"><span class="es">El flujo y la confianza</span><span class="en">The flow and the trust</span><span class="desc es">La confianza entre la persona que marca el rumbo y el agente que construye.</span><span class="desc en">Trust between the person who sets the course and the agent that builds.</span></span></a></li>
+      <li><a href="#cap4"><span class="num">4</span><span class="title-like"><span class="es">El producto de QA</span><span class="en">The QA product</span><span class="desc es">Del flujo naci&oacute; un modelo que se reutiliza y se mejora en cada proyecto.</span><span class="desc en">From that flow came a model that is reused and improved in every project.</span></span></a></li>
+      <li><a href="#cap5"><span class="num">5</span><span class="title-like"><span class="es">El ciclo 2026</span><span class="en">The 2026 cycle</span><span class="desc es">Del BA al BA: c&oacute;mo se trabaja hoy, con trazabilidad y automatizaci&oacute;n.</span><span class="desc en">From the BA back to the BA: how we work today, with traceability and automation.</span></span></a></li>
+      <li><a href="#cap6"><span class="num">6</span><span class="title-like"><span class="es">La seguridad</span><span class="en">Security</span><span class="desc es">Secretos, permisos y un agente supervisor dentro del equipo.</span><span class="desc en">Secrets, permissions and a supervisor agent on the team.</span></span></a></li>
+      <li><a href="#cap7"><span class="num">7</span><span class="title-like"><span class="es">El stack</span><span class="en">The stack</span><span class="desc es">Con qu&eacute; est&aacute; hecho todo esto: el motor, el respaldo y las herramientas.</span><span class="desc en">What all of this is made of: the engine, the backups and the tools.</span></span></a></li>
+    </ol>
+  </div>
+
+  <!-- Cap 1 -->
+  <section class="chapter" id="cap1">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 1 / Chapter 1</div>
+      <h2>
+        <span class="es">Empezar de cero</span>
+        <span class="en">Starting from zero</span>
+      </h2>
+    </div>
+    <p class="es">Todo empez&oacute; con una pregunta simple: &iquest;qu&eacute; puede construir, de verdad, una persona junto a una IA?</p>
+    <p class="en">It all started with one simple question: what can a person, together with an AI, actually build?</p>
+    <p class="es">Sin gran arquitectura. Un problema real, un agente y ganas de probar. Empezamos por lo conocido: scripts, errores de entorno, tareas chicas que igual hab&iacute;a que hacer bien.</p>
+    <p class="en">No big architecture. A real problem, an agent, and the will to try. We started with the known: scripts, environment errors, small tasks that still had to be done well.</p>
+    <p class="es">No sab&iacute;amos a d&oacute;nde lleg&aacute;bamos. Sab&iacute;amos c&oacute;mo quer&iacute;amos trabajar: claro, verificado, sin vueltas.</p>
+    <p class="en">We didn&rsquo;t know where we were going. We knew how we wanted to work: clear, verified, no detours.</p>
+    <div class="hash"><span class="es">#IA #QA #CalidadDeSoftware</span><span class="en">#AI #QA #SoftwareQuality</span></div>
+  </section>
+
+  <!-- Cap 2 -->
+  <section class="chapter" id="cap2">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 2 / Chapter 2</div>
+      <h2>
+        <span class="es">Investigar y escalar</span>
+        <span class="en">Research and scale</span>
+      </h2>
+    </div>
+    <p class="es">El paso siguiente fue investigar: qu&eacute; herramientas free exist&iacute;an, qu&eacute; recomendaba opencode, qu&eacute; se pod&iacute;a sostener en el tiempo.</p>
+    <p class="en">The next step was research: what free tools existed, what opencode recommended, what could be sustained over time.</p>
+    <p class="es">Fuimos probando, descartando y sumando. Cada herramienta que entraba ten&iacute;a que justificar su lugar. As&iacute; escalamos: no de golpe, sino paso a paso.</p>
+    <p class="en">We tested, discarded and added. Every tool that came in had to earn its place. That&rsquo;s how we scaled: not all at once, but step by step.</p>
+    <div class="hash"><span class="es">#OpenCode #Herramientas #IA</span><span class="en">#OpenCode #Tools #AI</span></div>
+  </section>
+
+  <!-- Cap 3 -->
+  <section class="chapter" id="cap3">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 3 / Chapter 3</div>
+      <h2>
+        <span class="es">El flujo y la confianza</span>
+        <span class="en">The flow and the trust</span>
+      </h2>
+    </div>
+    <p class="es">Lo que sostuvo el crecimiento no fue una herramienta: fue la confianza entre el agente constructor y quien marca el rumbo.</p>
+    <p class="en">What sustained the growth wasn&rsquo;t a tool: it was the trust between the builder agent and the one who sets the course.</p>
+    <p class="es">Con confianza se puede pedir algo m&aacute;s grande, corregir sin miedo y avanzar. Ah&iacute; apareci&oacute; el flujo: un m&eacute;todo de trabajo, no una suma de scripts sueltos.</p>
+    <p class="en">With trust you can ask for something bigger, correct without fear and move forward. That&rsquo;s when the flow appeared: a way of working, not a pile of loose scripts.</p>
+    <div class="quote">
+      <span class="es">&laquo;El rumbo lo marca la persona; el agente construye. La confianza se gana paso a paso.&raquo;</span>
+      <span class="en">&ldquo;The person sets the course; the agent builds. Trust is earned step by step.&rdquo;</span>
+    </div>
+    <div class="hash"><span class="es">#IA #Confianza #TrabajoEnEquipo</span><span class="en">#AI #Trust #Teamwork</span></div>
+  </section>
+
+  <!-- Cap 4 -->
+  <section class="chapter" id="cap4">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 4 / Chapter 4</div>
+      <h2>
+        <span class="es">El producto de QA</span>
+        <span class="en">The QA product</span>
+      </h2>
+    </div>
+    <p class="es">De ese flujo naci&oacute; un producto: un modelo de QA que reutilizamos en cada producto que desarrollamos.</p>
+    <p class="en">From that flow a product was born: a QA model we reuse in every product we build.</p>
+    <p class="es">No se rearma de cero cada vez. Se ajusta, se aplica y se mejora con cada proyecto nuevo.</p>
+    <p class="en">It isn&rsquo;t rebuilt from scratch each time. It is adjusted, applied and improved with every new project.</p>
+    <div class="hash"><span class="es">#QA #Producto #Calidad</span><span class="en">#QA #Product #Quality</span></div>
+  </section>
+
+  <!-- Cap 5 -->
+  <section class="chapter" id="cap5">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 5 / Chapter 5</div>
+      <h2>
+        <span class="es">El ciclo 2026</span>
+        <span class="en">The 2026 cycle</span>
+      </h2>
+    </div>
+    <p class="es">Nuestra diferencia es esta: nos ajustamos a c&oacute;mo se trabaja hoy, en 2026.</p>
+    <p class="en">Our difference is this: we adjust to how work is done today, in 2026.</p>
+    <p class="es">Un ciclo de testing que corre junto con la IA &mdash; arranca en el BA, pasa por todos los pasos y cierra con el BA.</p>
+    <p class="en">A testing cycle that runs together with AI &mdash; it starts with the BA, goes through every step, and closes with the BA.</p>
+    <p class="es">Las etapas se validan seg&uacute;n lo que requiera el cliente: Scrum o Kanban, siempre con el marco Agile como base.</p>
+    <p class="en">Stages are validated according to what the client needs: Scrum or Kanban, always with the Agile framework as the base.</p>
+    <div class="hash"><span class="es">#Agile #Scrum #Kanban #IA #Testing</span><span class="en">#Agile #Scrum #Kanban #AI #Testing</span></div>
+  </section>
+
+  <!-- Cap 6 -->
+  <section class="chapter" id="cap6">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 6 / Chapter 6</div>
+      <h2>
+        <span class="es">La seguridad</span>
+        <span class="en">Security</span>
+      </h2>
+    </div>
+    <p class="es">A medida que el producto crec&iacute;a, apareci&oacute; una necesidad clara: la seguridad ten&iacute;a que estar adentro, no como parche.</p>
+    <p class="en">As the product grew, one clear need appeared: security had to be inside, not bolted on.</p>
+    <p class="es">Sumamos un agente dedicado a la seguridad: vigila, revisa y avisa. Un rol m&aacute;s del equipo, con sus propias reglas.</p>
+    <p class="en">We added an agent dedicated to security: it watches, reviews and warns. One more role in the team, with its own rules.</p>
+    <div class="hash"><span class="es">#Seguridad #IA #AgentesDeIA</span><span class="en">#Security #AI #AIAgents</span></div>
+  </section>
+
+  <!-- Cap 7 -->
+  <section class="chapter" id="cap7">
+    <div class="chapter-head">
+      <div class="chapter-label">Cap&iacute;tulo 7 / Chapter 7</div>
+      <h2>
+        <span class="es">El stack</span>
+        <span class="en">The stack</span>
+      </h2>
+    </div>
+    <p class="es">De qu&eacute; est&aacute; hecho todo esto:</p>
+    <p class="en">What all of this is made of:</p>
+    <ul>
+      <li><span class="es"><strong>opencode</strong> + <strong>LLM</strong>: el motor de los agentes.</span><span class="en"><strong>opencode</strong> + <strong>LLM</strong>: the engine behind the agents.</span></li>
+      <li><span class="es"><strong>GitHub</strong>: repositorios para versionar y respaldar cada paso.</span><span class="en"><strong>GitHub</strong>: repositories to version and back up every step.</span></li>
+      <li><span class="es"><strong>Herramientas y lenguajes</strong> que fuimos sumando a medida que escal&aacute;bamos.</span><span class="en"><strong>Tools and languages</strong> we kept adding as we scaled.</span></li>
+    </ul>
+    <p class="es">Cada pieza justifica su lugar. Nada entra por moda.</p>
+    <p class="en">Every piece justifies its place. Nothing comes in just for fashion.</p>
+    <div class="hash"><span class="es">#opencode #LLM #GitHub #Tooling</span><span class="en">#opencode #LLM #GitHub #Tooling</span></div>
+  </section>
+
+  <!-- Cierre -->
+  <div class="closing">
+    <span class="es">Construir confianza en la era de la IA no es una idea abstracta: es lo que pasa cuando una persona y un agente trabajan en equipo.</span>
+    <span class="en">Building trust in the AI era isn&rsquo;t an abstract idea: it&rsquo;s what happens when a person and an agent work as a team.</span>
+  </div>
+
+  <div class="footer">
+    <p>Maria Laura Saavedra &mdash; Montevideo, Uruguay</p>
+    <p class="org">
+      <span class="es">Quality Sense Conf 2026 &mdash; organizado por</span>
+      <span class="en">Quality Sense Conf 2026 &mdash; organized by</span>
+      <img src="logos/abstracta.svg" alt="Abstracta">
+    </p>
+  </div>
+
+</div>
+
+<script>
+function toggleLang() {
+  var btn = document.getElementById('langBtn');
+  var es = document.documentElement.lang === 'es';
+  if (es) {
+    document.documentElement.lang = 'en';
+    document.body.classList.add('en');
+    btn.textContent = 'ES';
+  } else {
+    document.documentElement.lang = 'es';
+    document.body.classList.remove('en');
+    btn.textContent = 'EN';
+  }
+}
+</script>
+</body>
+</html>
